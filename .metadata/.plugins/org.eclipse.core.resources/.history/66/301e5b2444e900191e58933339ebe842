@@ -1,0 +1,54 @@
+package com.everis.xml.controller;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+//Importando todos los atributos y metodos estaticos dentro de la clase
+//ControllerLinkBuilder
+
+import com.everis.xml.model.Producto;
+
+@RestController
+public class ProductoController {
+
+		private static List<Producto> productos = new ArrayList<Producto>();
+		
+		//Constructor eestatico, inicializador todos los atributos estaticos
+		static {
+			productos.add(new Producto(1, "Producto 1"));
+			productos.add(new Producto(2, "Producto 2"));
+			productos.add(new Producto(3, "Producto 3"));
+			productos.add(new Producto(4, "Producto 4"));
+		}
+		
+//		@GetMapping(value="/productos/{id}", produces= {"application/json"})
+//		public Producto buscarProducto(@PathVariable int id) {
+//			return productos.get(id);
+//		}
+		
+		//@GetMapping(value="/productos", consumes= {"application/json"}, produces= {"application/json"})
+		//@GetMapping(value="/productos", produces= {"application/json"})
+		@GetMapping(value="/productos/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+		public Producto buscarProducto(@PathVariable int id) {
+		return productos.get(id);
+		}
+		
+		@GetMapping("/productos")
+		public List<Producto> listar() {
+			return productos;
+		}
+//		public Resources<Producto> listar() {
+//			for (Producto producto : productos) {
+//				Link selfLink = linkTo(methodOn(ProductoController.class)
+//						.buscarProducto(producto.getIdProducto())).withSelfRel();
+//				producto.add(selfLink);
+//			}
+//			
+//			return new Resources<Producto>(productos);
+//		}
+}

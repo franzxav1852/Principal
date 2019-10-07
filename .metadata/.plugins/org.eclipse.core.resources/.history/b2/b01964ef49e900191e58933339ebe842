@@ -1,0 +1,5 @@
+package com.everis.filtering.model;
+
+public class Usuario {
+
+}

@@ -1,0 +1,5 @@
+package com.everis.springexceptions.controller;
+
+public class UsuarioController {
+
+}

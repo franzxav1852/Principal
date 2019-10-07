@@ -1,0 +1,5 @@
+package com.everis.hateoas.controller;
+
+public class ProductoController {
+
+}

@@ -1,0 +1,5 @@
+package com.everis.versioning.model;
+
+public class PersonaV2 {
+
+}

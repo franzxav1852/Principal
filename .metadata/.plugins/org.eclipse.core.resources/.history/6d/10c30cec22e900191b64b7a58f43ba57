@@ -1,0 +1,5 @@
+package com.everis.springexceptions.exceptions;
+
+public class UsuarioNoEncontradoException extends Exception {
+
+}

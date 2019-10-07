@@ -1,0 +1,59 @@
+package com.everis.versioning.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.everis.versioning.model.PersonaV1;
+import com.everis.versioning.model.PersonaV2;
+
+@RestController
+public class PersonasController {
+	
+	//Versionamiento por URI - Twitter
+	@GetMapping("/v1/persona")
+	public PersonaV1 personaV1() {
+		return new PersonaV1("Francisco Pérez");
+	}
+	
+	@GetMapping("/v2/persona")
+	public PersonaV2 personaV2() {
+		return new PersonaV2("Francisco Javier", "Pérez", "Benito");	
+	}
+	
+	//QueryString -> Amazon
+	@GetMapping(value ="/persona/param", params = "version=1")
+	public PersonaV1 pesonaParamV1() {
+		return new PersonaV1("Francisco Pérez");
+	}
+	
+	@GetMapping(value ="/persona/param", params = "version=2")
+	public PersonaV2 pesonaParamV2() {
+		return new PersonaV2("Francisco Javier", "Pérez", "Benito");
+
+	}
+	
+	//Heathers -> Microsoft
+	
+	@GetMapping(value ="/persona/header", headers = "X-API-VERSION=1")
+	public PersonaV1 personaHeaderV1() {
+		return new PersonaV1("Francisco Pérez");
+	}
+	
+	@GetMapping(value ="/persona/header", headers = "X-API-VERSION=2")
+	public PersonaV2 personaHeaderV2() {
+		return new PersonaV2("Francisco Javier", "Pérez", "Benito");
+	}
+	
+	//Media Type ->GitHub
+	
+	@GetMapping(value ="/persona/mediatype", mediatype = "application/vnd.com.everis.app-v1+json")
+	public PersonaV1 personaMediaTypeV1() {
+		return new PersonaV1("Francisco Pérez");
+	}
+	
+	@GetMapping(value ="/persona/mediatype", mediatype = "application/vnd.com.everis.app-v2-json")
+	public PersonaV2 personaMediaTypeV2() {
+		return new PersonaV2("Francisco Javier", "Pérez", "Benito");
+	}
+	
+}

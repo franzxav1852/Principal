@@ -1,0 +1,5 @@
+package com.everis.springexceptions.repository;
+
+public class UsuarioRepository {
+
+}

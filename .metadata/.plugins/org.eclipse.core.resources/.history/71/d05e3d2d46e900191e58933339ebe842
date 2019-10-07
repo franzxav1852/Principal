@@ -1,0 +1,24 @@
+package com.everis.versioning.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.everis.versioning.model.PersonaV1;
+import com.everis.versioning.model.PersonaV2;
+
+@RestController
+public class PersonasController {
+	
+	//Versionamiento por URI - Twitter
+	@GetMapping("/v1/persona")
+	public PersonaV1 personaV1() {
+		return new PersonaV1("francisco perez");
+	}
+	
+	@GetMapping("/v2/persona")
+	public PersonaV2 personaV2() {
+		return new PersonaV2("Francisco Javier", "Pérez", "Benito");	
+	}
+
+
+}

@@ -1,0 +1,5 @@
+package com.everis.hateoas.model;
+
+public class Producto {
+
+}
